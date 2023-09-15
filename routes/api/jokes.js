@@ -4,6 +4,7 @@ const jokeController = require("../../controllers/jokeController");
 // Matches with "/api/jokes"
 router.route("/")
     .get(jokeController.findAll)
+    .post(jokeController.create);
 
 // Matches with "/api/jokes/:id"
 router.route("/:id")

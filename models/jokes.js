@@ -1,11 +1,12 @@
-module.exports = function(sequelize, DataTypes) {
-    let Joke = sequelize.define("joke", {
-        joke: DataTypes.STRING,
-        punchline: DataTypes.STRING,
-        approved: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false
-        }
-    })
-    return Joke;
-}
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const jokeSchema = new Schema({
+    jokeBody: { type: String, required: true },
+    punchline: { type: String, required: false },
+    approved: { type: Boolean, required: true }
+});
+
+const Joke = mongoose.model("Joke", jokeSchema);
+
+module.exports = Joke;
