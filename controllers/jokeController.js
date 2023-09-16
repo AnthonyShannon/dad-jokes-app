@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the JokeController
 module.exports = {
     findAll: function (req, res) {
-        db.Jokes.find(req.query)
+        db.Jokes.find({approved: true}, {jokeBody: 1, punchline: 1,})
             .then(dbJoke => res.json(dbJoke))
             .catch(err => res.status(422).json(err));
     },

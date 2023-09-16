@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardTitle, CardText } from 'reactstrap';
 import API from '../../utils/API'
 
-interface Props {
-    jokes: {
-        jokeBody: string,
-        punchline: string,
-    }[]
-}
+const Jokes = () => {
+    const [jokes, setJokes] = useState([{jokeBody: '', punchline: ''}])
 
-const Jokes = ({ jokes }: Props) => {
     useEffect(() => {
-        API.getJokes().then(res => console.log(res.data))
-        
+        API.getJokes()
+            .then(res => setJokes(res.data))
     }, []) 
 
     return (
@@ -20,10 +15,10 @@ const Jokes = ({ jokes }: Props) => {
             {jokes.map(joke => (
                 <Card className='joke-card'>
                     <CardTitle tag='h5'>
-                        {joke.jokeBody}
+                        {joke?.jokeBody}
                     </CardTitle>
                     <CardText>
-                        {joke.punchline}
+                        {joke?.punchline}
                     </CardText>
                 </Card>
             ))}
