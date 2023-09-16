@@ -1,4 +1,3 @@
-let db = require("../models");
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
@@ -7,8 +6,12 @@ const apiRoutes = require("./api");
 router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
-router.use((req, res) =>
-    res.sendFile(path.join(__dirname, "../client/build/index.html"))
-);
+router.use((req, res) => {
+    if (process.env.NODE_ENV === "production") {
+        res.sendFile(path.join(__dirname, "../client/build/index.html"))
+    } else {
+        res.sendFile(path.join(__dirname, "../client/public/index.html"))
+    }
+})
 
 module.exports = router;

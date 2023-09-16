@@ -1,24 +1,30 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Jokes from './components/Jokes/Jokes'
+import { Container } from 'reactstrap'
+
+const testJoke = [{
+  "jokeBody": "Why is it impossible to run through a campsite?",
+  "punchline": "You can only ran through it because it's past tents.",
+},
+{
+  "jokeBody": "Test Jokes?",
+  "punchline": "Test punchline.",
+},
+{
+  "jokeBody": "Why is it impossible to run through a campsite?",
+  "punchline": "You can only ran through it because it's past tents.",
+}]
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+      <div className='container-fluid'>
+        <Jokes jokes={testJoke} />
+      </div>
+      </Container>
     </div>
   );
 }
