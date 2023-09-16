@@ -1,5 +1,6 @@
-import React from 'react';
-import {Card, CardTitle, CardText} from 'reactstrap';
+import React, { useEffect } from 'react';
+import { Card, CardTitle, CardText } from 'reactstrap';
+import API from '../../utils/API'
 
 interface Props {
     jokes: {
@@ -8,19 +9,26 @@ interface Props {
     }[]
 }
 
-const Jokes = ({jokes}: Props) => (
-    <>
-        {jokes.map(joke => (
-            <Card className='joke-card'>
-                <CardTitle tag='h5'>
-                    {joke.jokeBody}
-                </CardTitle>
-                <CardText>
-                    {joke.punchline}
-                </CardText>
-            </Card>
-        ))}
-    </>
-)
+const Jokes = ({ jokes }: Props) => {
+    useEffect(() => {
+        API.getJokes().then(res => console.log(res.data))
+        
+    }, []) 
+
+    return (
+        <>
+            {jokes.map(joke => (
+                <Card className='joke-card'>
+                    <CardTitle tag='h5'>
+                        {joke.jokeBody}
+                    </CardTitle>
+                    <CardText>
+                        {joke.punchline}
+                    </CardText>
+                </Card>
+            ))}
+        </>
+    )
+}
 
 export default Jokes
