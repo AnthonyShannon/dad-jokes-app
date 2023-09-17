@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Jokes } from './components';
+import { Jokes, NewJokeModal } from './components';
 import { Container, Navbar, NavbarBrand, Nav, NavItem, Button } from 'reactstrap';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Navbar id='navbar' color='dark'>
         <NavbarBrand href='/'>Dad Jokes Ninja</NavbarBrand>
-        <Button outline color='light'>Add new joke</Button>
+        <NewJokeModal />
       </Navbar>
       <Container>
         <div className='container-fluid'>

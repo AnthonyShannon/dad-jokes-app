@@ -2,30 +2,30 @@ const db = require("../models");
 
 // Defining methods for the JokeController
 module.exports = {
-    findAll: function (req, res) {
-        db.Jokes.find({approved: true}, {jokeBody: 1, punchline: 1,})
+    findAll: (req, res) => {
+        db.Jokes.find({ approved: true }, { jokeBody: 1, punchline: 1, })
             .then(dbJoke => res.json(dbJoke))
-            .catch(err => res.status(422).json(err));
+            .catch(err => res.status(418).json(err));
     },
-    findById: function (req, res) {
+    findById: (req, res) => {
         db.Jokes.findById(req.params.id)
             .then(dbJoke => res.json(dbJoke))
-            .catch(err => res.status(422).json(err));
+            .catch(err => res.status(418).json(err));
     },
-    create: function (req, res) {
+    create: (req, res) => {
         db.Jokes.create(req.body)
             .then(dbJoke => res.json(dbJoke))
-            .catch(err => res.status(422).json(err));
+            .catch(err => res.status(418).json(err));
     },
-    update: function (req, res) {
+    update: (req, res) => {
         db.Jokes.findOneAndUpdate({ id: req.params.id }, req.body)
             .then(dbJoke => res.json(dbJoke))
-            .catch(err => res.status(422).json(err));
+            .catch(err => res.status(418).json(err));
     },
-    remove: function (req, res) {
+    remove: (req, res) => {
         db.Jokes.findById(req.params.id)
             .then(dbJoke => dbJoke.remove())
             .then(dbJoke => res.json(dbJoke))
-            .catch(err => res.status(422).json(err));
+            .catch(err => res.status(418).json(err));
     }
 };
