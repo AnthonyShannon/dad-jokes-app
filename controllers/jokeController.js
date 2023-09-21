@@ -7,6 +7,11 @@ module.exports = {
             .then(dbJoke => res.json(dbJoke))
             .catch(err => res.status(418).json(err));
     },
+    findAllUnapproved: (req, res) => {
+        db.Jokes.find({ approved: false }, { "_id": 1, approved: 1, jokeBody: 1, punchline: 1, })
+            .then(dbJoke => res.json(dbJoke))
+            .catch(err => res.status(418).json(err));
+    },
     findById: (req, res) => {
         db.Jokes.findById(req.params.id)
             .then(dbJoke => res.json(dbJoke))

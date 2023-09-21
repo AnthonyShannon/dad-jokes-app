@@ -6,6 +6,9 @@ router.route("/")
     .get(jokeController.findAll)
     .post(jokeController.create);
 
+router.route("/unapproved")
+    .get(jokeController.findAllUnapproved)
+
 // Matches with "/api/jokes/:id"
 router.route("/:id")
     .get(jokeController.findById)

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import { Jokes, NewJokeModal } from './components';
-import { Container, Navbar, NavbarBrand, Nav, NavItem, Button } from 'reactstrap';
+import { Jokes, NewJokeModal, UnapprovedJokes } from './components';
+import { Container, Navbar, NavbarBrand } from 'reactstrap';
 
 function App() {
 
@@ -14,6 +14,7 @@ function App() {
       <Container>
         <div className='container-fluid'>
           <Jokes />
+          <UnapprovedJokes />
         </div>
       </Container>
     </div>

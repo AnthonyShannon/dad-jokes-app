@@ -2,8 +2,10 @@ import axios from 'axios';
 
 export default {
     // get jokes
-    getJokes: () => 
+    getJokes: () =>
         axios.get('api/jokes/'),
-    addJoke: (newJoke: object) => 
+    getUnapprovedJokes: () =>
+        axios.get('api/jokes/unapproved/'),
+    addJoke: (newJoke: object) =>
         axios.post('api/jokes/', newJoke)
 }
