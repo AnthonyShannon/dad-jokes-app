@@ -14,7 +14,7 @@ function App() {
       <Container>
         <div className='container-fluid'>
           <Jokes />
-          <UnapprovedJokes />
+          {/* <UnapprovedJokes /> */}
         </div>
       </Container>
     </div>

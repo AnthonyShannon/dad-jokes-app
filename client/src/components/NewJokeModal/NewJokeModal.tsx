@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Alert } from 'reactstrap';
 import API from '../../utils/API'
 
 const NewJokeModal = () => {
@@ -23,6 +23,7 @@ const NewJokeModal = () => {
             <Button onClick={toggle} outline color='light'>Add New Joke</Button>
             <Modal isOpen={isOpen} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Add a new joke</ModalHeader>
+                <Alert color="secondary">All joke submissions will need to be approved by admin before appearing on the website.</Alert>
                 <ModalBody>
                     <Label for='jokeBodyEnter'>Joke</Label>
                     <Input id='jokeBodyEnter' type="textarea" name="Joke" required onChange={e => setNewJoke(e.target.value)} />
